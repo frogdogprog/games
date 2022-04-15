@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://dogg.png" type="Texture" id=1]
+[ext_resource path="res://dog.png" type="Texture" id=2]
+[ext_resource path="res://npc.gd" type="Script" id=3]
+[ext_resource path="res://bark.ogg" type="AudioStream" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "talk",
+"speed": 10.0
+} ]
+
+[sub_resource type="CylinderShape" id=2]
+radius = 0.16
+height = 0.7
+
+[sub_resource type="SphereShape" id=3]
+radius = 2.0
+
+[node name="dog" type="RigidBody"]
+script = ExtResource( 3 )
+words = [ "woof woof i am dog", "this is like way to poggers dude", "lol" ]
+appearance = SubResource( 1 )
+voice = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 2 )
+
+[node name="sprite" type="AnimatedSprite3D" parent="."]
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 1, 0, 0, 0 )
+billboard = 1
+frames = SubResource( 1 )
+animation = "talk"
+
+[node name="range" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="range"]
+shape = SubResource( 3 )
+
+[node name="voice" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 4 )
+max_db = 5.0
+max_distance = 10.0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/mixkit-medium-size-angry-dog-bark-54.ogg-be029e08985fbf59c3d23e6f976da509.oggstr"
+
+[deps]
+
+source_file="res://mixkit-medium-size-angry-dog-bark-54.ogg"
+dest_files=[ "res://.import/mixkit-medium-size-angry-dog-bark-54.ogg-be029e08985fbf59c3d23e6f976da509.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

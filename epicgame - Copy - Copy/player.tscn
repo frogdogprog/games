@@ -1,0 +1,121 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://character.gd" type="Script" id=1]
+[ext_resource path="res://coolguy.png" type="Texture" id=2]
+[ext_resource path="res://coolerguy - Copy - Copy (2) - Copy - Copy.png" type="Texture" id=3]
+[ext_resource path="res://coolerguy.png" type="Texture" id=4]
+[ext_resource path="res://coolerguy - Copy - Copy.png" type="Texture" id=5]
+[ext_resource path="res://coolerguy - Copy - Copy (2).png" type="Texture" id=6]
+[ext_resource path="res://coolerguy - Copy - Copy (2) - Copy - Copy - Copy.png" type="Texture" id=7]
+[ext_resource path="res://coolerguy - Copy.png" type="Texture" id=8]
+[ext_resource path="res://coolerguy - Copy - Copy - Copy.png" type="Texture" id=9]
+[ext_resource path="res://coolerguy - Copy - Copy (2) - Copy.png" type="Texture" id=10]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.16445
+height = 0.54
+
+[sub_resource type="BoxShape" id=2]
+margin = 0.001
+extents = Vector3( 0.24, 0.05, 0.24 )
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 0.48, 0.1, 0.96 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "skate6",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "skate4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "skate8",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "skate5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "skate2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "skate7",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "skate3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "skate1",
+"speed": 5.0
+} ]
+
+[node name="player" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="down" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.53, 0 )
+enabled = true
+cast_to = Vector3( 0, -2, 0 )
+
+[node name="look" type="Spatial" parent="."]
+
+[node name="grind" type="RayCast" parent="look"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3 )
+enabled = true
+cast_to = Vector3( 0, -0.8, 0 )
+collision_mask = 2
+collide_with_areas = true
+
+[node name="side" type="RayCast" parent="look"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -0.5 )
+collision_mask = 2
+collide_with_areas = true
+
+[node name="point" type="Spatial" parent="look"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, -0.3 )
+
+[node name="phone" type="ClippedCamera" parent="look"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.291, 0.242, 0.408 )
+
+[node name="skatboard" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48, 0 )
+shape = SubResource( 2 )
+
+[node name="CSGMesh" type="CSGMesh" parent="skatboard"]
+visible = false
+mesh = SubResource( 3 )
+
+[node name="character" type="AnimatedSprite3D" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
+billboard = 1
+frames = SubResource( 4 )
+
+[node name="Listener" type="Listener" parent="."]
+current = true
