@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/metal_gear_solid_game_over_screen_clean_background-1.mp3-0eab6e3a02580f1d7484c599d31c1392.mp3str"
+
+[deps]
+
+source_file="res://metal_gear_solid_game_over_screen_clean_background-1.mp3"
+dest_files=[ "res://.import/metal_gear_solid_game_over_screen_clean_background-1.mp3-0eab6e3a02580f1d7484c599d31c1392.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
